@@ -1,0 +1,70 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import javax.swing.JOptionPane;
+
+/*
+ * 3/10/17 - Created Player Movement, atEdge, and ded
+ */
+public class stickDude extends Actor
+{
+    /**
+     * Act - do whatever the micSco wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    private int newX;
+    private int newY;
+    private String ded;
+    
+    public void act() 
+    {
+        move();
+        getHit();
+        atEdge();
+    }    
+    
+    public void move(){
+        if(Greenfoot.isKeyDown("up")){
+            newX = getX();
+            newY = getY()-5;
+            setLocation(newX, newY);
+        }
+        if(Greenfoot.isKeyDown("down")){
+            newX = getX();
+            newY = getY()+5;
+            setLocation(newX, newY);
+        }
+        /*
+        if(Greenfoot.isKeyDown("right")){
+            newX=getX()+5;
+            newY=getY();
+            setLocation(newX,newY);
+        }
+        if(Greenfoot.isKeyDown("left")){
+            newX=getX()-5;
+            newY=getY();
+            setLocation(newX,newY);
+        }
+        */
+    }
+    
+    public void getHit(){
+        if(isTouching(Wall.class)){
+            removeTouching(stickDude.class);
+            ded = JOptionPane.showInputDialog("You Failed To Escape");
+            Greenfoot.stop();
+        }
+    }
+    
+    public void atEdge(){
+        newX = getX();
+        newY = getY();
+        if(getY()<=10){
+            setLocation(newX, newY+5);
+        }
+        if(getY()>=385){
+            setLocation(newX, newY-5);
+        }
+        if(getX()<=10){
+            setLocation(newX+5, newY);
+        }
+    }
+}
