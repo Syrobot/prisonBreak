@@ -1,0 +1,20 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+/*
+ * 3/10/17 - Created Skeleton Code
+ */
+public class PrisonArea extends World
+{
+
+    /**
+     * Constructor for objects of class MyWorld.
+     * 
+     */
+    public PrisonArea()
+    {    
+        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        super(600, 400, 1); 
+        addObject(new stickDude(), 60, 300);
+        addObject(new Wall(), 500, 353);
+        
+    }
+}
